@@ -30,4 +30,4 @@ msgstr "Параметры клавиатуры…"
 
 #: ../src/Indicator.vala:56
 msgid "Show keyboard map"
-msgstr ""
+msgstr "Показать раскладку"
