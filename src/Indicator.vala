@@ -17,7 +17,7 @@
 
 public class Keyboard.Indicator : Wingpanel.Indicator {
     private Gtk.Grid main_grid;
-    private Keyboard.Widgets.KeyboardIcon display_icon;
+    private DisplayWidget display_widget;
     private Keyboard.Widgets.LayoutManager layouts;
 
     public Indicator () {
@@ -27,18 +27,11 @@ public class Keyboard.Indicator : Wingpanel.Indicator {
     }
 
     public override Gtk.Widget get_display_widget () {
-        if (display_icon == null) {
-            display_icon = new Keyboard.Widgets.KeyboardIcon ();
+        display_widget = new DisplayWidget ();
 
-            display_icon.button_press_event.connect ((e) => {
-                if (e.button == Gdk.BUTTON_MIDDLE) {
-                    layouts.next ();
-                    return Gdk.EVENT_STOP;
-                }
-                return Gdk.EVENT_PROPAGATE;
-            });
-        }
-        return display_icon;
+        visible = true;
+
+        return display_widget;
     }
 
     public override Gtk.Widget? get_widget () {
@@ -57,7 +50,11 @@ public class Keyboard.Indicator : Wingpanel.Indicator {
             map_button.clicked.connect (show_keyboard_map);
 
             layouts.updated.connect (() => {
-                display_icon.label = layouts.get_current (true);
+                if (layouts.get_current (true) == "ru") {
+                    display_widget.icon_name = "russian-symbolic";
+                } else {
+                    display_widget.icon_name = "english-symbolic";                
+                }
                 var new_visibility = layouts.has_layouts ();
                 if (new_visibility != visible) {
                     visible = new_visibility;

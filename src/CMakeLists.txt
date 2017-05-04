@@ -17,6 +17,7 @@ vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
   LayoutsManager.vala
   LayoutButton.vala
   KeyboardIcon.vala
+  DisplayWidget.vala
   ${CMAKE_CURRENT_BINARY_DIR}/config.vala
 PACKAGES
   wingpanel-2.0

@@ -41,6 +41,9 @@ add_subdirectory(src)
 # Traslation stuff
 add_subdirectory (po)
 
+# Icons
+add_subdirectory (icons)
+
 # Uninstall target
 configure_file(
     "${CMAKE_SOURCE_DIR}/cmake/Uninstall.cmake"
