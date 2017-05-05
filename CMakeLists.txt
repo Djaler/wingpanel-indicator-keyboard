@@ -42,7 +42,12 @@ add_subdirectory(src)
 add_subdirectory (po)
 
 # Icons
-add_subdirectory (icons)
+set (SYSTEM_DEFAULT_THEME ${CMAKE_INSTALL_PREFIX}/share/icons/elementary)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/english-symbolic.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/status/symbolic)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/russian-symbolic.svg DESTINATION ${SYSTEM_DEFAULT_THEME}/status/symbolic)
+
+install(CODE "execute_process(COMMAND update-icon-caches ${SYSTEM_DEFAULT_THEME})")
 
 # Uninstall target
 configure_file(
