@@ -13,6 +13,7 @@ wingpanel_dep = dependency('wingpanel-2.0')
 
 shared_module(
     meson.project_name(),
+    'src/IconWidget.vala',
     'src/Indicator.vala',
     'src/KeyboardIcon.vala',
     'src/LayoutButton.vala',
@@ -29,4 +30,5 @@ shared_module(
     install_dir : wingpanel_dep.get_pkgconfig_variable('indicatorsdir')
 )
 
+subdir('data')
 subdir('po')
